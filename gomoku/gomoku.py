@@ -17,15 +17,13 @@ class Gomoku:
 
     def display(self):
         """显示棋盘"""
-        # 打印列号
         print("   ", end="")
         for i in range(self.size):
             print(f"{i:2} ", end="")
         print()
 
-        # 打印棋盘
         for i in range(self.size):
-            print(f"{i:2} ", end="")  # 行号
+            print(f"{i:2} ", end="")
             for j in range(self.size):
                 print(f" {self.board[i][j]} ", end="")
             print()
@@ -38,10 +36,10 @@ class Gomoku:
 
     def place_stone(self, row, col):
         """落子"""
-        if not self.is_valid_move(row, col):
-            return False
-        self.board[row][col] = self.current_player
-        return True
+        if self.is_valid_move(row, col):
+            self.board[row][col] = self.current_player
+            return True
+        return False
 
     def check_win(self, row, col):
         """检查是否获胜"""
@@ -75,6 +73,14 @@ class Gomoku:
     def switch_player(self):
         """切换玩家"""
         self.current_player = 'O' if self.current_player == 'X' else 'X'
+
+    def is_draw(self):
+        """检查是否平局"""
+        for row in self.board:
+            for cell in row:
+                if cell == '.':
+                    return False
+        return True
 
     def parse_input(self, input_str):
         """解析用户输入"""
@@ -123,6 +129,10 @@ class Gomoku:
                 print(f"\n{'黑棋 (X)' if self.current_player == 'X' else '白棋 (O)'} 获胜!")
                 self.game_over = True
                 self.winner = self.current_player
+            elif self.is_draw():
+                self.display()
+                print("\n平局!")
+                self.game_over = True
             else:
                 self.switch_player()
 
