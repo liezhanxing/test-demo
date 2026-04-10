@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 快乐五子棋</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="sky-background">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+    </div>
+
+    <div class="game-container">
+        <header class="game-header">
+            <h1>🎮 快乐五子棋 🎮</h1>
+            <p class="subtitle">和好朋友一起玩吧！</p>
+        </header>
+
+        <div class="player-info">
+            <div class="player-card player-x active">
+                <div class="player-avatar">⚫</div>
+                <div class="player-name">黑棋</div>
+                <div class="player-indicator"></div>
+            </div>
+            <div class="vs-badge">VS</div>
+            <div class="player-card player-o">
+                <div class="player-avatar">⚪</div>
+                <div class="player-name">白棋</div>
+                <div class="player-indicator"></div>
+            </div>
+        </div>
+
+        <div class="board-container">
+            <div class="board" id="board"></div>
+            <div class="win-line" id="winLine"></div>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-restart" id="restartBtn">
+                <span class="btn-icon">🔄</span> 重新开始
+            </button>
+            <button class="btn btn-undo" id="undoBtn">
+                <span class="btn-icon">↩️</span> 悔棋
+            </button>
+            <button class="btn btn-sound" id="soundBtn">
+                <span class="btn-icon">🔊</span> 音效：<span id="soundStatus">开</span>
+            </button>
+        </div>
+
+        <div class="message-box" id="messageBox">
+            <div class="message-content">
+                <span class="message-icon">🎉</span>
+                <span class="message-text" id="messageText">黑棋先手，请落子！</span>
+            </div>
+        </div>
+    </div>
+
+    <footer class="game-footer">
+        <p>提示：点击棋盘落子，先连成五子一线获胜！</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
